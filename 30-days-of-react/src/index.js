@@ -62,18 +62,18 @@ class App extends React.Component {
 
   render() {
     const data = {
-      welcome: '30 Days Of React',
+      welcome: 'winnert',
       title: 'Getting Started React',
       subtitle: 'JavaScript Library',
       author: {
-        firstName: 'Asabeneh',
-        lastName: 'Yetayeh',
+        firstName: 'billy',
+        lastName: 'lin',
       },
-      date: 'Oct 9, 2020',
+      date: '2024',
     }
 
     let status
-    let text
+    let text="pie"
 
     if (this.state.loggedIn) {
       status = <h1>Welcome to 30 Days Of React</h1>
