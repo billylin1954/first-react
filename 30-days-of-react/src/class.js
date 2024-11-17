@@ -7,7 +7,7 @@ class Parent {
       this.title = title
     }
     getPersonInfo() {
-      return `${this.firstName} ${this.lastName},  a ${this.title} developer base in ${this.country} `
+      return `${this.firstName} ${this.lastName},  a ${this.title} developer based in ${this.country} `
     }
     parentMethod() {
       // code goes here
