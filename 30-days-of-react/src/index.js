@@ -2,30 +2,96 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// Header Component
-const Header = () => (
-  <header>
-    <div className='header-wrapper'>
-      <h1>Welcome to 30 Days Of React</h1>
-      <h2>Getting Started React</h2>
-      <h3>JavaScript Library</h3>
-      <p>Asabeneh Yetayeh</p>
-      <small>Oct 3, 2020</small>
-      < TechList/>
-      <List/>
-    </div>
-  </header>
+// A button component
+const Button = ({ text, onClick, style }) => (
+  <button style={style} onClick={onClick}>
+    {text}
+  </button>
 )
-const TechList = () => {
-    const techs = ['HTML', 'CSS', 'JavaScript']
-    const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
-    return techsFormatted
+
+// CSS styles in JavaScript Object
+const buttonStyles = {
+  backgroundColor: '#61dbfb',
+  padding: 10,
+  border: 'none',
+  borderRadius: 5,
+  margin: '3px auto',
+  cursor: 'pointer',
+  fontSize: 22,
+  color: 'white',
+}
+
+// class based component
+class Header extends React.Component {
+  render() {
+    const {
+      welcome,
+      title,
+      subtitle,
+      author: { firstName, lastName },
+      date,
+    } = this.props.data
+    
+    console.log(this.props.data)
+    return (
+      <header>
+        <div className='header-wrapper'>
+          <h1>{welcome}</h1>
+          <h2>{title}</h2>
+          <h3>{subtitle}</h3>
+          <p>
+            {firstName} {lastName}
+          </p>
+          <small>{date}</small>
+        </div>
+      </header>
+    )
   }
-  const List = () => {
-      const stuff= (<h1>sup</h1>)
-     return stuff
+}
+
+class App extends React.Component {
+  state = {
+    loggedIn: false,
   }
-  
+  handleLogin = () => {
+    console.log(!this.state.loggedIn)
+    this.setState({
+     loggedIn: !this.state.loggedIn,
+    })
+  }
+
+  render() {
+    const data = {
+      welcome: '30 Days Of React',
+      title: 'Getting Started React',
+      subtitle: 'JavaScript Library',
+      author: {
+        firstName: 'Asabeneh',
+        lastName: 'Yetayeh',
+      },
+      date: 'Oct 9, 2020',
+    }
+
+    let status
+    let text
+
+    if (this.state.loggedIn) {
+      status = <h1>Welcome to 30 Days Of React</h1>
+      text = 'Logout'
+    } else {
+      status = <h3>Please Login</h3>
+      text = 'Login'
+    }
+
+    return (
+      <div className='app'>
+        <Header data={data} />
+        {status}
+        <Button text={text} style={buttonStyles} onClick={this.handleLogin} />
+      </div>
+    )
+  }
+}
+
 const rootElement = document.getElementById('root')
-// we render the JSX element using the ReactDOM package
-ReactDOM.render(<Header />, rootElement)
+ReactDOM.render(<App />, rootElement)
