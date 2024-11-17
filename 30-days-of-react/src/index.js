@@ -62,7 +62,7 @@ class App extends React.Component {
 
   render() {
     const data = {
-      welcome: 'winnert',
+      welcome: 'winner',
       title: 'Getting Started React',
       subtitle: 'JavaScript Library',
       author: {
